@@ -1,6 +1,8 @@
+import { useSelector } from "react-redux";
 import Cell from "./Cell";
 
-export default ({ word = "" }) => {
+export default ({ word = "", index = 0 }) => {
+	const round = useSelector((state) => state.round);
 	const wordToPrint = (() => {
 		if (word.length < 5) {
 			return word + " ".repeat(5 - word.length);
@@ -10,8 +12,10 @@ export default ({ word = "" }) => {
 
 	return (
 		<div className="row">
-			{wordToPrint.split("").map((letter, index) => {
-				return <Cell letter={letter} positionIndex={index} />;
+			{wordToPrint.split("").map((letter, pos) => {
+				return (
+					<Cell reveal={index < round} letter={letter} positionIndex={pos} />
+				);
 			})}
 		</div>
 	);

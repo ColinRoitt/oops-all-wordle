@@ -4,7 +4,6 @@ import Row from "./Row";
 export default ({}) => {
 	const grid = useSelector((state) => state.grid);
 	const round = useSelector((state) => state.round);
-	console.log(grid, round);
 	const dispatch = useDispatch();
 	const type = (letter) => {
 		if (grid[round].length < 5) {
@@ -32,7 +31,7 @@ export default ({}) => {
 		<div className="game">
 			<div className="grid">
 				{grid.map((word, index) => {
-					return <Row key={`row-${index}`} word={word} key={index} />;
+					return <Row key={`row-${index}`} word={word} index={index} />;
 				})}
 			</div>
 			<div className="keyboard">

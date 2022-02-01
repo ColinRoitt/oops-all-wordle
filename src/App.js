@@ -9,7 +9,7 @@ function App() {
 	const dispatch = useDispatch();
 	dispatch({ type: "SET_WORDS", payload: words });
 	dispatch({ type: "SET_NON_PLAYABLE_WORDS", payload: nonPlayableWords });
-	dispatch({ type: "SET_NON_PLAYABLE_WORDS", payload: words[32] });
+	dispatch({ type: "SET_CURRENT_WORD", payload: words[32].toUpperCase() });
 
 	return (
 		<div className="App">

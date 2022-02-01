@@ -21,6 +21,14 @@
 	align-items: center;
 }
 
+.used {
+	background-color: #ff0000;
+}
+
+.correct {
+	background-color: #00ff00;
+}
+
 .row {
 	display: flex;
 	flex-direction: row;
