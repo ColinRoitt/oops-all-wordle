@@ -4,6 +4,9 @@ import KeyboardKey from "./KeyboardKey";
 import Row from "./Row";
 
 export default ({}) => {
+	// TODO
+	// allow hardware keyboard to be used
+	// Account for double letters in keyboard and cell position
 	const currentWord = useSelector((state) => state.currentWord);
 	const words = useSelector((state) => state.words);
 	const nonPlayableWords = useSelector((state) => state.nonPlayableWords);
