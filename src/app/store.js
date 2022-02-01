@@ -6,10 +6,17 @@ const initalState = {
 	currentWord: "",
 	grid: ["", "", "", "", "", ""],
 	round: 0,
+	msg: {},
 };
 
 export const reducer = (state = initalState, action = {}) => {
 	switch (action.type) {
+		case "MSG": {
+			return {
+				...state,
+				msg: action.payload,
+			};
+		}
 		case "SET_WORDS":
 			return {
 				...state,

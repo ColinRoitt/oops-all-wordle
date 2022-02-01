@@ -16,6 +16,7 @@ body {
 }
 
 .game {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -64,6 +65,7 @@ body {
 
 .keyboard-key {
 	background-color: #808384;
+	color: #d7dadc;
 	font-size: 1rem;
 	font-weight: bold;
 	height: 3rem;
@@ -78,4 +80,14 @@ body {
 .keyboard-key.double-width {
 	width: 3rem;
 	font-size: 0.8rem;
+}
+
+.message {
+	background-color: white;
+	color: black;
+	position: absolute;
+	top: 0.8rem;
+	font-size: 1rem;
+	border-radius: 0.3rem;
+	padding: 0.8rem;
 }

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Row from "./Row";
 
@@ -9,7 +10,9 @@ export default ({}) => {
 	console.log(currentWord);
 	const grid = useSelector((state) => state.grid);
 	const round = useSelector((state) => state.round);
+	const msg = useSelector((state) => state.msg);
 	const dispatch = useDispatch();
+
 	const type = (letter) => {
 		if (grid[round].length < 5) {
 			const newGrid = [...grid];
@@ -17,15 +20,25 @@ export default ({}) => {
 			dispatch({ type: "SET_GRID", payload: newGrid });
 		}
 	};
+	console.log(round);
 	const enter = () => {
 		if (wordsToCheck.includes(grid[round].toLowerCase())) {
 			if (grid[round].length === 5) {
 				const newGrid = [...grid];
 				dispatch({ type: "SET_GRID", payload: newGrid });
 				dispatch({ type: "SET_ROUND", payload: round + 1 });
+				if (round >= 5) {
+					dispatch({
+						type: "MSG",
+						payload: { duration: 100000, text: "The word was " + currentWord },
+					});
+				}
 			}
 		} else {
-			alert("Not in word list");
+			dispatch({
+				type: "MSG",
+				payload: { text: "Not in word list", duration: 4000 },
+			});
 		}
 	};
 	const backspace = () => {
@@ -36,8 +49,18 @@ export default ({}) => {
 		}
 	};
 
+	useEffect(() => {
+		if (!msg.text) return;
+		const id = setTimeout(
+			() => dispatch({ type: "MSG", payload: { text: "", duration: 0 } }),
+			msg.duration
+		);
+		return () => clearTimeout(id);
+	}, [msg]);
+
 	return (
 		<div className="game">
+			{msg.text && <div className="message">{msg.text}</div>}
 			<div className="grid">
 				{grid.map((word, index) => {
 					return <Row key={`row-${index}`} word={word} index={index} />;
