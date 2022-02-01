@@ -4,6 +4,8 @@ const initalState = {
 	words: [],
 	nonPlayableWords: [],
 	currentWord: "",
+	grid: ["     ", "     ", "     ", "     ", "     ", "     "],
+	round: 0,
 };
 
 export const reducer = (state = initalState, action = {}) => {
@@ -22,6 +24,16 @@ export const reducer = (state = initalState, action = {}) => {
 			return {
 				...state,
 				currentWord: action.payload,
+			};
+		case "SET_GRID":
+			return {
+				...state,
+				grid: action.payload,
+			};
+		case "SET_ROUND":
+			return {
+				...state,
+				round: action.payload,
 			};
 		default:
 			return state;
