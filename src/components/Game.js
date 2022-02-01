@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import KeyboardKey from "./KeyboardKey";
 import Row from "./Row";
 
 export default ({}) => {
@@ -69,91 +70,22 @@ export default ({}) => {
 			</div>
 			<div className="keyboard">
 				<div className="keyboard-row">
-					<div className="keyboard-key" onClick={() => type("Q")}>
-						Q
-					</div>
-					<div className="keyboard-key" onClick={() => type("W")}>
-						W
-					</div>
-					<div className="keyboard-key" onClick={() => type("E")}>
-						E
-					</div>
-					<div className="keyboard-key" onClick={() => type("R")}>
-						R
-					</div>
-					<div className="keyboard-key" onClick={() => type("T")}>
-						T
-					</div>
-					<div className="keyboard-key" onClick={() => type("Y")}>
-						Y
-					</div>
-					<div className="keyboard-key" onClick={() => type("U")}>
-						U
-					</div>
-					<div className="keyboard-key" onClick={() => type("I")}>
-						I
-					</div>
-					<div className="keyboard-key" onClick={() => type("O")}>
-						O
-					</div>
-					<div className="keyboard-key" onClick={() => type("P")}>
-						P
-					</div>
+					{"QWERTYUIOP".split("").map((letter) => (
+						<KeyboardKey type={type} letter={letter} key={`key-${letter}`} />
+					))}
 				</div>
 				<div className="keyboard-row">
-					<div className="keyboard-key" onClick={() => type("A")}>
-						A
-					</div>
-					<div className="keyboard-key" onClick={() => type("S")}>
-						S
-					</div>
-					<div className="keyboard-key" onClick={() => type("D")}>
-						D
-					</div>
-					<div className="keyboard-key" onClick={() => type("F")}>
-						F
-					</div>
-					<div className="keyboard-key" onClick={() => type("G")}>
-						G
-					</div>
-					<div className="keyboard-key" onClick={() => type("H")}>
-						H
-					</div>
-					<div className="keyboard-key" onClick={() => type("J")}>
-						J
-					</div>
-					<div className="keyboard-key" onClick={() => type("K")}>
-						K
-					</div>
-					<div className="keyboard-key" onClick={() => type("L")}>
-						L
-					</div>
+					{"ASDFGHJKL".split("").map((letter) => (
+						<KeyboardKey type={type} letter={letter} key={`key-${letter}`} />
+					))}
 				</div>
 				<div className="keyboard-row">
 					<div className="keyboard-key double-width" onClick={enter}>
 						ENTER
 					</div>
-					<div className="keyboard-key" onClick={() => type("Z")}>
-						Z
-					</div>
-					<div className="keyboard-key" onClick={() => type("X")}>
-						X
-					</div>
-					<div className="keyboard-key" onClick={() => type("C")}>
-						C
-					</div>
-					<div className="keyboard-key" onClick={() => type("V")}>
-						V
-					</div>
-					<div className="keyboard-key" onClick={() => type("B")}>
-						B
-					</div>
-					<div className="keyboard-key" onClick={() => type("N")}>
-						N
-					</div>
-					<div className="keyboard-key" onClick={() => type("M")}>
-						M
-					</div>
+					{"ZXCVBNM".split("").map((letter) => (
+						<KeyboardKey type={type} letter={letter} key={`key-${letter}`} />
+					))}
 					<div className="keyboard-key double-width" onClick={backspace}>
 						BACK
 					</div>
