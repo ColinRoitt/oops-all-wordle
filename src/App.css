@@ -82,6 +82,18 @@ body {
 	font-size: 0.8rem;
 }
 
+.key-used {
+	opacity: 0.5;
+}
+
+.key-in-word {
+	background-color: #b59f3b;
+}
+
+.key-correct {
+	background-color: #538d4e;
+}
+
 .message {
 	background-color: white;
 	color: black;

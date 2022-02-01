@@ -13,6 +13,8 @@ export default ({}) => {
 	const msg = useSelector((state) => state.msg);
 	const dispatch = useDispatch();
 
+	console.log(currentWord);
+
 	const type = (letter) => {
 		if (grid[round].length < 5) {
 			const newGrid = [...grid];
