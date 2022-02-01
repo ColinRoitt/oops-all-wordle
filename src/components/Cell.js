@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 export default ({ letter = "", positionIndex = -1, reveal = true }) => {
 	const currentWord = useSelector((state) => state.currentWord);
 	const isCurrentLetterUsed = currentWord.includes(letter);
-	const isInCorrectPosition = positionIndex === currentWord.indexOf(letter);
+	const isInCorrectPosition = letter === currentWord[positionIndex];
 
 	const color = (() => {
 		if (isInCorrectPosition && reveal) {
