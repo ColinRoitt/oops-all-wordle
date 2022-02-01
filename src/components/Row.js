@@ -19,6 +19,7 @@ export default ({ word = "", index = 0 }) => {
 						reveal={index < round}
 						letter={letter}
 						positionIndex={pos}
+						row={index}
 					/>
 				);
 			})}
