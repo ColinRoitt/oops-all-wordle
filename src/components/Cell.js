@@ -6,10 +6,18 @@ export default ({ letter = "", positionIndex = -1, reveal = true, row }) => {
 	// const isCurrentLetterUsed = currentWord.includes(letter);
 	const isInCorrectPosition = letter === currentWord[positionIndex];
 
-	const letterNotGuessed = guess
+	const letterNotGuessed = currentWord
 		.split("")
-		.filter((lett) => currentWord.includes(lett))
+		.filter((lett, index) => lett !== guess[index])
+		.filter((lett) => guess.includes(lett))
 		.includes(letter);
+
+	// console.log(
+	// 	guess
+	// 		.split("")
+	// 		.filter((lett, index) => lett !== currentWord[index])
+	// 		.filter((lett) => currentWord.includes(lett))
+	// );
 
 	const color = (() => {
 		if (isInCorrectPosition && reveal) {
