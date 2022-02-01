@@ -1,0 +1,47 @@
+.App {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-self: center;
+}
+
+.game {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.cell {
+	border: solid 1px black;
+	height: 3rem;
+	width: 3rem;
+	margin: 0.2rem;
+}
+
+.row {
+	display: flex;
+	flex-direction: row;
+}
+
+.keyboard {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-top: 1rem;
+}
+
+.keyboard-row {
+	display: flex;
+	flex-direction: row;
+}
+
+.keyboard-key {
+	border: solid 1px black;
+	height: 3rem;
+	width: 3rem;
+	margin: 0.2rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}

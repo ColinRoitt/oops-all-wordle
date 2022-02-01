@@ -3,6 +3,7 @@ import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
 import { words } from "./data/words";
 import { nonPlayableWords } from "./data/nonPlayableWords";
+import Game from "./components/Game";
 
 function App() {
 	const dispatch = useDispatch();
@@ -13,6 +14,7 @@ function App() {
 	return (
 		<div className="App">
 			<h1>Collection-of-wordsle</h1>
+			<Game />
 		</div>
 	);
 }
