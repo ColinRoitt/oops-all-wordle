@@ -13,8 +13,8 @@ function App() {
 		dispatch({ type: "SET_NON_PLAYABLE_WORDS", payload: nonPlayableWords });
 		dispatch({
 			type: "SET_CURRENT_WORD",
-			payload: "POOLS",
-			// payload: words[Math.floor(Math.random() * words.length)].toUpperCase(),
+			// payload: "POOLS",
+			payload: words[Math.floor(Math.random() * words.length)].toUpperCase(),
 		});
 	}, []);
 
