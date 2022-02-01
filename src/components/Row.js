@@ -14,7 +14,12 @@ export default ({ word = "", index = 0 }) => {
 		<div className="row">
 			{wordToPrint.split("").map((letter, pos) => {
 				return (
-					<Cell reveal={index < round} letter={letter} positionIndex={pos} />
+					<Cell
+						key={`cell-${index}-${pos}`}
+						reveal={index < round}
+						letter={letter}
+						positionIndex={pos}
+					/>
 				);
 			})}
 		</div>

@@ -18,7 +18,7 @@ export const reducer = (state = initalState, action = {}) => {
 		case "SET_NON_PLAYABLE_WORDS":
 			return {
 				...state,
-				words: action.payload,
+				nonPlayableWords: action.payload,
 			};
 		case "SET_CURRENT_WORD":
 			return {

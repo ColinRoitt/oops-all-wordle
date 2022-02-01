@@ -2,6 +2,11 @@ import { useDispatch, useSelector } from "react-redux";
 import Row from "./Row";
 
 export default ({}) => {
+	const currentWord = useSelector((state) => state.currentWord);
+	const words = useSelector((state) => state.words);
+	const nonPlayableWords = useSelector((state) => state.nonPlayableWords);
+	const wordsToCheck = [...words, ...nonPlayableWords];
+	console.log(currentWord);
 	const grid = useSelector((state) => state.grid);
 	const round = useSelector((state) => state.round);
 	const dispatch = useDispatch();
@@ -13,10 +18,14 @@ export default ({}) => {
 		}
 	};
 	const enter = () => {
-		if (grid[round].length === 5) {
-			const newGrid = [...grid];
-			dispatch({ type: "SET_GRID", payload: newGrid });
-			dispatch({ type: "SET_ROUND", payload: round + 1 });
+		if (wordsToCheck.includes(grid[round].toLowerCase())) {
+			if (grid[round].length === 5) {
+				const newGrid = [...grid];
+				dispatch({ type: "SET_GRID", payload: newGrid });
+				dispatch({ type: "SET_ROUND", payload: round + 1 });
+			}
+		} else {
+			alert("Not in word list");
 		}
 	};
 	const backspace = () => {
