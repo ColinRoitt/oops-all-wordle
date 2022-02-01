@@ -106,7 +106,7 @@ export default ({}) => {
 					</div>
 				</div>
 				<div className="keyboard-row">
-					<div className="keyboard-key double-height" onClick={enter}>
+					<div className="keyboard-key double-width" onClick={enter}>
 						ENTER
 					</div>
 					<div className="keyboard-key" onClick={() => type("Z")}>
@@ -130,7 +130,7 @@ export default ({}) => {
 					<div className="keyboard-key" onClick={() => type("M")}>
 						M
 					</div>
-					<div className="keyboard-key double-height" onClick={backspace}>
+					<div className="keyboard-key double-width" onClick={backspace}>
 						BACK
 					</div>
 				</div>

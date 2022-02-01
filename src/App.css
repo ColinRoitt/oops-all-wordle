@@ -32,6 +32,8 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	font-size: 2rem;
+	font-weight: bold;
 }
 
 .used {
@@ -62,6 +64,8 @@ body {
 
 .keyboard-key {
 	background-color: #808384;
+	font-size: 1rem;
+	font-weight: bold;
 	height: 3rem;
 	width: 2rem;
 	margin: 0.2rem;
@@ -69,4 +73,9 @@ body {
 	align-items: center;
 	justify-content: center;
 	border-radius: 10%;
+}
+
+.keyboard-key.double-width {
+	width: 3rem;
+	font-size: 0.8rem;
 }
