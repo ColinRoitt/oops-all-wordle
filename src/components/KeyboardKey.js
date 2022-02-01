@@ -9,14 +9,14 @@ export default ({ letter, type }) => {
 		(acc, word) => acc || word.includes(letter),
 		false
 	);
-	// const isValid = currentWord.includes(letter);
+	// const isValid = isPlayed && currentWord.includes(letter);
 	const isValid = grid.reduce(
 		(acc, word) => acc || (isPlayed && currentWord.includes(letter)),
 		false
 	);
 	const isValidAndCorrectPosition = grid.reduce(
 		(acc, word) =>
-			acc || (isPlayed && currentWord.indexOf(letter) === word.indexOf(letter)),
+			acc || (isValid && currentWord.indexOf(letter) === word.indexOf(letter)),
 		false
 	);
 
