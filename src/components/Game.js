@@ -4,23 +4,35 @@ import Row from "./Row";
 export default ({}) => {
 	const grid = useSelector((state) => state.grid);
 	const round = useSelector((state) => state.round);
+	console.log(grid, round);
 	const dispatch = useDispatch();
 	const type = (letter) => {
-		if (grid[round].replace(" ", "").length < 5) {
-			const placeInWord = grid[round].indexOf(" ");
+		if (grid[round].length < 5) {
 			const newGrid = [...grid];
-			newGrid[round] =
-				newGrid[round].substr(0, placeInWord) +
-				letter +
-				newGrid[round].substr(placeInWord + 1);
+			newGrid[round] += letter;
 			dispatch({ type: "SET_GRID", payload: newGrid });
 		}
 	};
+	const enter = () => {
+		if (grid[round].length === 5) {
+			const newGrid = [...grid];
+			dispatch({ type: "SET_GRID", payload: newGrid });
+			dispatch({ type: "SET_ROUND", payload: round + 1 });
+		}
+	};
+	const backspace = () => {
+		if (grid[round].length > 0) {
+			const newGrid = [...grid];
+			newGrid[round] = newGrid[round].slice(0, -1);
+			dispatch({ type: "SET_GRID", payload: newGrid });
+		}
+	};
+
 	return (
 		<div className="game">
 			<div className="grid">
 				{grid.map((word, index) => {
-					return <Row word={word} key={index} />;
+					return <Row key={`row-${index}`} word={word} key={index} />;
 				})}
 			</div>
 			<div className="keyboard">
@@ -86,7 +98,9 @@ export default ({}) => {
 					</div>
 				</div>
 				<div className="keyboard-row">
-					<div className="keyboard-key double-height">ENTER</div>
+					<div className="keyboard-key double-height" onClick={enter}>
+						ENTER
+					</div>
 					<div className="keyboard-key" onClick={() => type("Z")}>
 						Z
 					</div>
@@ -108,7 +122,9 @@ export default ({}) => {
 					<div className="keyboard-key" onClick={() => type("M")}>
 						M
 					</div>
-					<div className="keyboard-key double-height">BACK</div>
+					<div className="keyboard-key double-height" onClick={backspace}>
+						BACK
+					</div>
 				</div>
 			</div>
 		</div>

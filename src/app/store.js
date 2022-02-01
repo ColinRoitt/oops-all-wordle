@@ -4,7 +4,7 @@ const initalState = {
 	words: [],
 	nonPlayableWords: [],
 	currentWord: "",
-	grid: ["     ", "     ", "     ", "     ", "     ", "     "],
+	grid: ["", "", "", "", "", ""],
 	round: 0,
 };
 
