@@ -7,7 +7,6 @@ export default ({}) => {
 	const words = useSelector((state) => state.words);
 	const nonPlayableWords = useSelector((state) => state.nonPlayableWords);
 	const wordsToCheck = [...words, ...nonPlayableWords];
-	console.log(currentWord);
 	const grid = useSelector((state) => state.grid);
 	const round = useSelector((state) => state.round);
 	const msg = useSelector((state) => state.msg);
@@ -20,7 +19,6 @@ export default ({}) => {
 			dispatch({ type: "SET_GRID", payload: newGrid });
 		}
 	};
-	console.log(round);
 	const enter = () => {
 		if (wordsToCheck.includes(grid[round].toLowerCase())) {
 			if (grid[round].length === 5) {
@@ -30,7 +28,10 @@ export default ({}) => {
 				if (round >= 5) {
 					dispatch({
 						type: "MSG",
-						payload: { duration: 100000, text: "The word was " + currentWord },
+						payload: {
+							duration: 10000000,
+							text: "The word was " + currentWord + " - refresh to play again",
+						},
 					});
 				}
 			}
