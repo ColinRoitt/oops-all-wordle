@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default ({ letter = "", positionIndex = -1, reveal = true, row }) => {
 	const currentWord = useSelector((state) => state.currentWord);
-	const guess = useSelector((state) => state.grid)[row].slice(0, positionIndex);
+	const guess = useSelector((state) => state.grid)[row];
 	const isCurrentLetterUsed = currentWord.includes(letter);
 	const isInCorrectPosition = letter === currentWord[positionIndex];
 
@@ -21,7 +21,7 @@ export default ({ letter = "", positionIndex = -1, reveal = true, row }) => {
 		if (
 			isCurrentLetterUsed &&
 			reveal &&
-			timesLetterInGuess < timesLetterInWord
+			!(timesLetterInGuess > timesLetterInWord)
 		) {
 			return "used";
 		}
