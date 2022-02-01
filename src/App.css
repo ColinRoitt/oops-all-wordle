@@ -82,15 +82,15 @@ body {
 	font-size: 0.8rem;
 }
 
-.key-used {
+.keyboard-key.used {
 	opacity: 0.5;
 }
 
-.key-in-word {
+.keyboard-key.in-word {
 	background-color: #b59f3b;
 }
 
-.key-correct {
+.keyboard-key.correct {
 	background-color: #538d4e;
 }
 
