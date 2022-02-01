@@ -3,6 +3,7 @@ import { createStore } from "@reduxjs/toolkit";
 const initalState = {
 	words: [],
 	nonPlayableWords: [],
+	currentWord: "",
 };
 
 export const reducer = (state = initalState, action = {}) => {
@@ -16,6 +17,11 @@ export const reducer = (state = initalState, action = {}) => {
 			return {
 				...state,
 				words: action.payload,
+			};
+		case "SET_CURRENT_WORD":
+			return {
+				...state,
+				currentWord: action.payload,
 			};
 		default:
 			return state;

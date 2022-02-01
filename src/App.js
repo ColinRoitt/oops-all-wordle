@@ -8,6 +8,7 @@ function App() {
 	const dispatch = useDispatch();
 	dispatch({ type: "SET_WORDS", payload: words });
 	dispatch({ type: "SET_NON_PLAYABLE_WORDS", payload: nonPlayableWords });
+	dispatch({ type: "SET_NON_PLAYABLE_WORDS", payload: words[32] });
 
 	return (
 		<div className="App">
