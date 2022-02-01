@@ -66,6 +66,24 @@ export default ({}) => {
 		return () => clearTimeout(id);
 	}, [msg]);
 
+	// const keyPress = ({ key }) => {
+	// 	const options = [
+	// 		..."abcdefghijklmnopqrstuvwxyz".split(""),
+	// 		"Enter",
+	// 		"Backspace",
+	// 	];
+	// 	if (options.includes(key)) {
+	// 		if (key === "Enter") enter();
+	// 		else if (key === "Backspace") backspace();
+	// 		else type(key.toUpperCase());
+	// 	}
+	// };
+
+	// useEffect(() => {
+	// 	document.addEventListener("keypress", keyPress, false);
+	// 	// return document.removeEventListener("keypress", keyPress);
+	// }, [keyPress]);
+
 	return (
 		<div className="game">
 			{msg.text && <div className="message">{msg.text}</div>}
