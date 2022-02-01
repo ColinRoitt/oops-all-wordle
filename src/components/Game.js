@@ -6,7 +6,8 @@ import Row from "./Row";
 export default ({}) => {
 	// TODO
 	// allow hardware keyboard to be used
-	// Account for double letters in keyboard and cell position
+	// Account for double letters in keyboard ~and cell position~
+	// Dont highlight letters yellow if they are correct in other places
 	const currentWord = useSelector((state) => state.currentWord);
 	const words = useSelector((state) => state.words);
 	const nonPlayableWords = useSelector((state) => state.nonPlayableWords);
