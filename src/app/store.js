@@ -12,7 +12,7 @@ export const reducer = (state = initalState, action = {}) => {
 				...state,
 				words: action.payload,
 			};
-		case "SET_WORDS":
+		case "SET_NON_PLAYABLE_WORDS":
 			return {
 				...state,
 				words: action.payload,
