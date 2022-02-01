@@ -99,6 +99,7 @@ body {
 	color: black;
 	position: absolute;
 	/* top: 0.8rem; */
+	top: 0rem;
 	font-size: 1rem;
 	border-radius: 0.3rem;
 	padding: 0.8rem;
