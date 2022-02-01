@@ -1,6 +1,7 @@
 {
   "name": "collection-of-wordsle",
   "version": "0.1.0",
+  "homepage": "https://colinroitt.uk/collection-of-wordsle/",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.7.1",
