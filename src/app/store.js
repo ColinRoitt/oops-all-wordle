@@ -1,8 +1,14 @@
-import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import { createStore } from '@reduxjs/toolkit';
 
-export const store = configureStore({
-  reducer: {
-    counter: counterReducer,
-  },
-});
+const initalState = {
+  words: "",
+}
+
+export const reducer = (state = initalState, action={}) => {
+  switch (action.type) {
+    case 'SET_WORDS': return {...state, words: action.payload}
+    default:
+      return state;
+  }
+}
+export const store = createStore(reducer);
