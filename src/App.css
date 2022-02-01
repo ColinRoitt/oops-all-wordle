@@ -3,6 +3,7 @@ html {
 }
 body {
 	font-size: 62.5%;
+	background-color: black;
 }
 
 .App {
@@ -10,16 +11,21 @@ body {
 	flex-direction: column;
 	align-items: center;
 	justify-self: center;
+	color: white;
+	height: 100%;
 }
 
 .game {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: space-evenly;
+	margin-top: 3rem;
+	height: 100%;
 }
 
 .cell {
-	border: solid 1px black;
+	border: solid 1px white;
 	height: 3rem;
 	width: 3rem;
 	margin: 0.2rem;
@@ -29,11 +35,11 @@ body {
 }
 
 .used {
-	background-color: #ff0000;
+	background-color: #b59f3b;
 }
 
 .correct {
-	background-color: #00ff00;
+	background-color: #538d4e;
 }
 
 .row {
@@ -55,11 +61,12 @@ body {
 }
 
 .keyboard-key {
-	border: solid 1px black;
+	background-color: #808384;
 	height: 3rem;
 	width: 2rem;
 	margin: 0.2rem;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	border-radius: 10%;
 }
