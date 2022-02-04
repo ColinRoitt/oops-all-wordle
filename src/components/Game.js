@@ -1,7 +1,20 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import KeyboardKey from "./KeyboardKey";
 import Row from "./Row";
+import StatScreen from "./StatScreen";
+
+// game schema
+// {
+// 	didWin: true || false,
+// 	rounds: 1-6,
+// 	grid: [],
+// }
+const saveGame = (game) => {
+	const savedGames = JSON.parse(localStorage.getItem("savedGames")) || [];
+	const newSavedGames = [...savedGames, game];
+	localStorage.setItem("savedGames", JSON.stringify(newSavedGames));
+};
 
 export default ({}) => {
 	// TODO
@@ -15,6 +28,13 @@ export default ({}) => {
 	const msg = useSelector((state) => state.msg);
 	const dispatch = useDispatch();
 
+	const [statScreen, setStatScreen] = useState(false);
+
+	const onGameOver = ({ didWin, rounds, grid }) => {
+		saveGame({ didWin, rounds, grid });
+		setStatScreen(true);
+	};
+
 	const type = (letter) => {
 		if (grid[round].length < 5) {
 			const newGrid = [...grid];
@@ -23,12 +43,14 @@ export default ({}) => {
 		}
 	};
 	const enter = () => {
+		console.log("ENTER");
 		if (wordsToCheck.includes(grid[round].toLowerCase())) {
 			if (grid[round].length === 5) {
 				const newGrid = [...grid];
 				dispatch({ type: "SET_GRID", payload: newGrid });
 				dispatch({ type: "SET_ROUND", payload: round + 1 });
 				if (grid[round] === currentWord) {
+					onGameOver({ didWin: true, rounds: round + 1, grid });
 					dispatch({
 						type: "MSG",
 						payload: {
@@ -38,6 +60,7 @@ export default ({}) => {
 					});
 				} else {
 					if (round >= 5) {
+						onGameOver({ didWin: false, rounds: round + 1, grid });
 						dispatch({
 							type: "MSG",
 							payload: {
@@ -86,6 +109,18 @@ export default ({}) => {
 	// 	}
 	// };
 
+	// const [debounce, setDebounce] = useState(false);
+
+	// useEffect(() => {
+	// 	document.addEventListener("keypress", (e) => {
+	// 		if (!(e.metaKey || e.ctrlKey)) {
+	// 			e.preventDefault();
+	// 			console.log("fire!", e.key);
+	// 			keyPress(e);
+	// 		}
+	// 	});
+	// }, [keyPress]);
+
 	// useEffect(() => {
 	// 	document.addEventListener("keypress", keyPress, false);
 	// 	// return document.removeEventListener("keypress", keyPress);
@@ -94,6 +129,7 @@ export default ({}) => {
 	return (
 		<div className="game">
 			{msg.text && <div className="message">{msg.text}</div>}
+			{statScreen && <StatScreen />}
 			<div className="grid">
 				{grid.map((word, index) => {
 					return <Row key={`row-${index}`} word={word} index={index} />;
