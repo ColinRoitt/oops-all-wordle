@@ -80,7 +80,7 @@ export default ({}) => {
 					</span>
 					<span className="value">
 						<span className="num">
-							{Math.round(gamesWon / gamesPlayed / 100)}
+							{Math.round((gamesWon / gamesPlayed) * 100)}
 						</span>
 						<span className="label">won %</span>
 					</span>
