@@ -68,6 +68,34 @@ export default ({}) => {
 		window.location.reload();
 	};
 
+	const oneValue =
+		(gameFromLocalStorage.filter((game) => game.rounds === 1).length /
+			gamesPlayed) *
+		100;
+
+	const twoValue =
+		(gameFromLocalStorage.filter((game) => game.rounds === 2).length /
+			gamesPlayed) *
+		100;
+
+	const threeValue =
+		(gameFromLocalStorage.filter((game) => game.rounds === 3).length /
+			gamesPlayed) *
+		100;
+
+	const fourValue =
+		(gameFromLocalStorage.filter((game) => game.rounds === 4).length /
+			gamesPlayed) *
+		100;
+	const fiveValue =
+		(gameFromLocalStorage.filter((game) => game.rounds === 5).length /
+			gamesPlayed) *
+		100;
+	const sixValue =
+		(gameFromLocalStorage.filter((game) => game.rounds === 6).length /
+			gamesPlayed) *
+		100;
+
 	return (
 		<div className="stat-screen-cont">
 			<div className="stat-screen">
@@ -92,8 +120,37 @@ export default ({}) => {
 						<span className="label">max streak</span>
 					</div> */}
 				</div>
-				<h2 className="guess-distribution"></h2>
-				<p>GRAPH HERE</p>
+				<h2 className="guess-distribution">GUESS DISTRIBUTION</h2>
+				<div className="graph">
+					<div className="labels">
+						<span className="num">1</span>
+						<span className="num">2</span>
+						<span className="num">3</span>
+						<span className="num">4</span>
+						<span className="num">5</span>
+						<span className="num">6</span>
+					</div>
+					<div className="bars">
+						<div className="one bar" style={{ width: oneValue + "%" }}>
+							<span className="val">{oneValue}</span>
+						</div>
+						<div className="two bar" style={{ width: twoValue + "%" }}>
+							<span className="val">{twoValue}</span>
+						</div>
+						<div className="three bar" style={{ width: threeValue + "%" }}>
+							<span className="val">{threeValue}</span>
+						</div>
+						<div className="four bar" style={{ width: fourValue + "%" }}>
+							<span className="val">{fourValue}</span>
+						</div>
+						<div className="five bar" style={{ width: fiveValue + "%" }}>
+							<span className="val">{fiveValue}</span>
+						</div>
+						<div className="six bar" style={{ width: sixValue + "%" }}>
+							<span className="val">{sixValue}</span>
+						</div>
+					</div>
+				</div>
 				<div className="buttons">
 					<button className="reset" onClick={refresh}>
 						Reset
