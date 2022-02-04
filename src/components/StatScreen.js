@@ -18,16 +18,15 @@ export default ({}) => {
 	const gameFromLocalStorage = JSON.parse(localStorage.getItem("savedGames"));
 	const gamesWon = gameFromLocalStorage.filter((game) => !!game.didWin).length;
 	const gamesPlayed = gameFromLocalStorage.length + 1;
-	const currentWinStreak =
-		(() => {
-			let wonLastGame = false;
-			let i = gameFromLocalStorage.length;
-			while (wonLastGame) {
-				i--;
-				wonLastGame = gameFromLocalStorage[i].didWin;
-			}
-			return i;
-		})() + 1;
+	const currentWinStreak = (() => {
+		let wonLastGame = true;
+		let i = gameFromLocalStorage.length - 1;
+		while (wonLastGame) {
+			wonLastGame = gameFromLocalStorage[i].didWin;
+			i--;
+		}
+		return gameFromLocalStorage.length - 2 - i;
+	})();
 
 	const longestWinStreak =
 		(() => {
@@ -88,10 +87,10 @@ export default ({}) => {
 						<span className="num">{currentWinStreak}</span>
 						<span className="label">streak</span>
 					</div>
-					<div className="value">
+					{/* <div className="value">
 						<span className="num">{longestWinStreak}</span>
 						<span className="label">max streak</span>
-					</div>
+					</div> */}
 				</div>
 				<h2 className="guess-distribution"></h2>
 				<p>GRAPH HERE</p>
