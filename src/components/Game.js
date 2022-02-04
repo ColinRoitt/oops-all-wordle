@@ -6,8 +6,6 @@ import Row from "./Row";
 export default ({}) => {
 	// TODO
 	// allow hardware keyboard to be used
-	// Account for double letters in keyboard ~and cell position~
-	// Dont highlight letters yellow if they are correct in other places
 	const currentWord = useSelector((state) => state.currentWord);
 	const words = useSelector((state) => state.words);
 	const nonPlayableWords = useSelector((state) => state.nonPlayableWords);
@@ -16,8 +14,6 @@ export default ({}) => {
 	const round = useSelector((state) => state.round);
 	const msg = useSelector((state) => state.msg);
 	const dispatch = useDispatch();
-
-	// console.log(currentWord);
 
 	const type = (letter) => {
 		if (grid[round].length < 5) {
@@ -32,14 +28,25 @@ export default ({}) => {
 				const newGrid = [...grid];
 				dispatch({ type: "SET_GRID", payload: newGrid });
 				dispatch({ type: "SET_ROUND", payload: round + 1 });
-				if (round >= 5) {
+				if (grid[round] === currentWord) {
 					dispatch({
 						type: "MSG",
 						payload: {
 							duration: 10000000,
-							text: "The word was " + currentWord + " - refresh to play again",
+							text: `Correct! in ${round + 1} guesses - refresh to play again`,
 						},
 					});
+				} else {
+					if (round >= 5) {
+						dispatch({
+							type: "MSG",
+							payload: {
+								duration: 10000000,
+								text:
+									"The word was " + currentWord + " - refresh to play again",
+							},
+						});
+					}
 				}
 			}
 		} else {
