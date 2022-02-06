@@ -35,6 +35,10 @@ body {
 	color: white;
 }
 
+.light-mode .cell.past {
+	background-color: rgb(219, 219, 219);
+}
+
 .header {
 	display: flex;
 	/* grid-template-columns: 1fr auto 1fr; */
@@ -74,11 +78,15 @@ body {
 	font-weight: bold;
 }
 
+.cell.past {
+	background-color: rgb(77, 77, 77);
+}
+
 .Y {
-	background-color: #b59f3b;
+	background-color: #b59f3b !important;
 }
 .G {
-	background-color: #538d4e;
+	background-color: #538d4e !important;
 }
 
 .row {
