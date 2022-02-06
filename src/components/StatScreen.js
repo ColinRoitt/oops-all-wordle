@@ -132,22 +132,52 @@ export default ({}) => {
 					</div>
 					<div className="bars">
 						<div className="one bar" style={{ width: oneValue + "%" }}>
-							<span className="val">{oneValue}</span>
+							<span className="val">
+								{
+									gameFromLocalStorage.filter((game) => game.rounds === 1)
+										.length
+								}
+							</span>
 						</div>
 						<div className="two bar" style={{ width: twoValue + "%" }}>
-							<span className="val">{twoValue}</span>
+							<span className="val">
+								{
+									gameFromLocalStorage.filter((game) => game.rounds === 2)
+										.length
+								}
+							</span>
 						</div>
 						<div className="three bar" style={{ width: threeValue + "%" }}>
-							<span className="val">{threeValue}</span>
+							<span className="val">
+								{
+									gameFromLocalStorage.filter((game) => game.rounds === 3)
+										.length
+								}
+							</span>
 						</div>
 						<div className="four bar" style={{ width: fourValue + "%" }}>
-							<span className="val">{fourValue}</span>
+							<span className="val">
+								{
+									gameFromLocalStorage.filter((game) => game.rounds === 4)
+										.length
+								}
+							</span>
 						</div>
 						<div className="five bar" style={{ width: fiveValue + "%" }}>
-							<span className="val">{fiveValue}</span>
+							<span className="val">
+								{
+									gameFromLocalStorage.filter((game) => game.rounds === 5)
+										.length
+								}
+							</span>
 						</div>
 						<div className="six bar" style={{ width: sixValue + "%" }}>
-							<span className="val">{sixValue}</span>
+							<span className="val">
+								{
+									gameFromLocalStorage.filter((game) => game.rounds === 6)
+										.length
+								}
+							</span>
 						</div>
 					</div>
 				</div>
