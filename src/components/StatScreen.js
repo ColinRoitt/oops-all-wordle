@@ -19,29 +19,31 @@ export default ({}) => {
 	const gamesWon = gameFromLocalStorage.filter((game) => !!game.didWin).length;
 	const gamesPlayed = gameFromLocalStorage.length + 1;
 	const currentWinStreak = (() => {
+		console.log(gameFromLocalStorage);
+		if (gameFromLocalStorage.length === 0) return 0;
 		let wonLastGame = true;
 		let i = gameFromLocalStorage.length - 1;
 		while (wonLastGame) {
-			wonLastGame = gameFromLocalStorage[i].didWin;
+			wonLastGame = !!gameFromLocalStorage[i]?.didWin;
 			i--;
 		}
 		return gameFromLocalStorage.length - 2 - i;
 	})();
 
-	const longestWinStreak =
-		(() => {
-			let i = 0;
-			let j = 0;
-			while (i < gameFromLocalStorage.length) {
-				if (gameFromLocalStorage[i].didWin) {
-					j++;
-				} else {
-					j = 0;
-				}
-				i++;
-			}
-			return j;
-		})() + 1;
+	// const longestWinStreak =
+	// 	(() => {
+	// 		let i = 0;
+	// 		let j = 0;
+	// 		while (i < gameFromLocalStorage.length) {
+	// 			if (gameFromLocalStorage[i].didWin) {
+	// 				j++;
+	// 			} else {
+	// 				j = 0;
+	// 			}
+	// 			i++;
+	// 		}
+	// 		return j;
+	// 	})() + 1;
 
 	// const dispatch = useDispatch();
 	const currentWord = useSelector((state) => state.currentWord);
