@@ -39,6 +39,15 @@ body {
 	background-color: rgb(219, 219, 219);
 }
 
+.light-mode .stat-screen {
+	background-color: white;
+	color: black;
+}
+
+.light-mode .stat-screen .bar {
+	color: white;
+}
+
 .header {
 	display: flex;
 	/* grid-template-columns: 1fr auto 1fr; */
@@ -153,7 +162,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	/* justify-content: center; */
+	justify-content: center;
 	height: 100%;
 	width: 100vw;
 	position: absolute;
@@ -210,7 +219,7 @@ button.copy {
 	background-color: #6aaa64;
 	height: 2rem;
 	width: 6rem;
-	font-size: 0.9rem;
+	font-size: 0.8rem;
 	font-weight: bold;
 	border-radius: 0.2rem;
 	border: none;
@@ -236,6 +245,10 @@ button.copy {
 	flex-direction: row-reverse;
 	font-size: 0.8rem;
 	/* min-width: 6%; */
+}
+
+.bar > .val {
+	padding: 0 0.2rem 0 0.2rem;
 }
 
 .graph .labels {

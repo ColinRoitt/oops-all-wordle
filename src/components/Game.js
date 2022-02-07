@@ -131,7 +131,6 @@ export default ({ statScreen, setStatScreen }) => {
 	return (
 		<div className="game">
 			{msg.text && <div className="message">{msg.text}</div>}
-			{statScreen && <StatScreen setStatScreen={setStatScreen} />}
 			<div className="grid">
 				{grid.map((word, index) => {
 					return <Row key={`row-${index}`} word={word} index={index} />;

@@ -4,6 +4,7 @@ import { useDispatch, useSelector, useStore } from "react-redux";
 import { words } from "./data/words";
 import { nonPlayableWords } from "./data/nonPlayableWords";
 import Game from "./components/Game";
+import StatScreen from "./components/StatScreen";
 
 function App() {
 	const dispatch = useDispatch();
@@ -39,6 +40,7 @@ function App() {
 
 	return (
 		<div className={`App ${lightMode ? "light-mode" : ""}`}>
+			{statScreen && <StatScreen setStatScreen={setStatScreen} />}
 			<div className="header">
 				<i
 					onClick={() => setStatScreen(true)}
