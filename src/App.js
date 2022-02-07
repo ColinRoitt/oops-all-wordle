@@ -8,6 +8,8 @@ import Game from "./components/Game";
 function App() {
 	const dispatch = useDispatch();
 
+	const [statScreen, setStatScreen] = useState(false);
+
 	const [lightMode, setLightMode] = useState(
 		!!JSON.parse(localStorage.getItem("lightMode"))
 	);
@@ -38,11 +40,14 @@ function App() {
 	return (
 		<div className={`App ${lightMode ? "light-mode" : ""}`}>
 			<div className="header">
-				<div className="spacer">C</div>
+				<i
+					onClick={() => setStatScreen(true)}
+					className="fas fa-calculator"
+				></i>
 				<h1>Collection-of-wordsle</h1>
 				<i onClick={toggleLightMode} className="fas fa-lightbulb"></i>
 			</div>
-			<Game />
+			<Game statScreen={statScreen} setStatScreen={setStatScreen} />
 		</div>
 	);
 }

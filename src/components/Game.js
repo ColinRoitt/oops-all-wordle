@@ -16,7 +16,7 @@ const saveGame = (game) => {
 	localStorage.setItem("savedGames", JSON.stringify(newSavedGames));
 };
 
-export default ({}) => {
+export default ({ statScreen, setStatScreen }) => {
 	// TODO
 	// allow hardware keyboard to be used
 	const currentWord = useSelector((state) => state.currentWord);
@@ -27,8 +27,6 @@ export default ({}) => {
 	const round = useSelector((state) => state.round);
 	const msg = useSelector((state) => state.msg);
 	const dispatch = useDispatch();
-
-	const [statScreen, setStatScreen] = useState(false);
 
 	const onGameOver = ({ didWin, rounds, grid }) => {
 		saveGame({ didWin, rounds, grid });
@@ -129,7 +127,7 @@ export default ({}) => {
 	return (
 		<div className="game">
 			{msg.text && <div className="message">{msg.text}</div>}
-			{statScreen && <StatScreen />}
+			{statScreen && <StatScreen setStatScreen={setStatScreen} />}
 			<div className="grid">
 				{grid.map((word, index) => {
 					return <Row key={`row-${index}`} word={word} index={index} />;

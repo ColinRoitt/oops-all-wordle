@@ -14,10 +14,10 @@ const blank = "⬛";
 const green = "🟩";
 const yellow = "🟨";
 
-export default ({}) => {
+export default ({ setStatScreen }) => {
 	const gameFromLocalStorage = JSON.parse(localStorage.getItem("savedGames"));
 	const gamesWon = gameFromLocalStorage.filter((game) => !!game.didWin).length;
-	const gamesPlayed = gameFromLocalStorage.length + 1;
+	const gamesPlayed = gameFromLocalStorage.length;
 	const currentWinStreak = (() => {
 		console.log(gameFromLocalStorage);
 		if (gameFromLocalStorage.length === 0) return 0;
@@ -99,7 +99,7 @@ export default ({}) => {
 		100;
 
 	return (
-		<div className="stat-screen-cont">
+		<div className="stat-screen-cont" onClick={() => setStatScreen(false)}>
 			<div className="stat-screen">
 				<h1>statistics</h1>
 				<div className="numbers">
