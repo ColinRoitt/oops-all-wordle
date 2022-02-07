@@ -137,37 +137,37 @@ export default ({ setStatScreen }) => {
 						<div className="one bar" style={{ width: oneValue + "%" }}>
 							<span className="val">
 								{gameFromLocalStorage.filter((game) => game.rounds === 1)
-									.length || " "}
+									.length || "-"}
 							</span>
 						</div>
 						<div className="two bar" style={{ width: twoValue + "%" }}>
 							<span className="val">
 								{gameFromLocalStorage.filter((game) => game.rounds === 2)
-									.length || " "}
+									.length || "-"}
 							</span>
 						</div>
 						<div className="three bar" style={{ width: threeValue + "%" }}>
 							<span className="val">
 								{gameFromLocalStorage.filter((game) => game.rounds === 3)
-									.length || " "}
+									.length || "-"}
 							</span>
 						</div>
 						<div className="four bar" style={{ width: fourValue + "%" }}>
 							<span className="val">
 								{gameFromLocalStorage.filter((game) => game.rounds === 4)
-									.length || " "}
+									.length || "-"}
 							</span>
 						</div>
 						<div className="five bar" style={{ width: fiveValue + "%" }}>
 							<span className="val">
 								{gameFromLocalStorage.filter((game) => game.rounds === 5)
-									.length || " "}
+									.length || "-"}
 							</span>
 						</div>
 						<div className="six bar" style={{ width: sixValue + "%" }}>
 							<span className="val">
 								{gameFromLocalStorage.filter((game) => game.rounds === 6)
-									.length || " "}
+									.length || "-"}
 							</span>
 						</div>
 					</div>
