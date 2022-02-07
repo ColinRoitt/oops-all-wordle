@@ -1,18 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-
-// lol thx https://codegolf.stackexchange.com/questions/241723/highlight-a-wordle-guess
-const color = (s) => (g) =>
-	g.map(
-		(u, i) =>
-			s[i] - u && s.some((v, j) => ((g[j] == v) | (u - v) ? 0 : (s[j] = 1)))
-	);
-const word2arr = (word) => [...word].map((ch) => ch.charCodeAt());
-const ret2chr = (ret) =>
-	[...ret].map((v) => (v === 0 ? "G" : v === true ? "Y" : " "));
-
-const blank = "⬛";
-const green = "🟩";
-const yellow = "🟨";
+import { convertToColors, blank, green, yellow } from "../util";
 
 export default ({ setStatScreen }) => {
 	const gameFromLocalStorage = JSON.parse(localStorage.getItem("savedGames"));
@@ -50,7 +37,7 @@ export default ({ setStatScreen }) => {
 	const round = useSelector((state) => state.round);
 	const grid = useSelector((state) => state.grid).slice(0, round);
 	const colors = grid.map((row, index) =>
-		ret2chr(color(word2arr(currentWord))(word2arr(row)))
+		convertToColors({ word: currentWord, row })
 	);
 
 	const clipboardContent = colors

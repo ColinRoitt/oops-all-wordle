@@ -3,18 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import KeyboardKey from "./KeyboardKey";
 import Row from "./Row";
 import StatScreen from "./StatScreen";
-
-// game schema
-// {
-// 	didWin: true || false,
-// 	rounds: 1-6,
-// 	grid: [],
-// }
-const saveGame = (game) => {
-	const savedGames = JSON.parse(localStorage.getItem("savedGames")) || [];
-	const newSavedGames = [...savedGames, game];
-	localStorage.setItem("savedGames", JSON.stringify(newSavedGames));
-};
+import { saveGame } from "../util";
 
 export default ({ statScreen, setStatScreen }) => {
 	// TODO
