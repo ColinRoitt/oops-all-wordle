@@ -16,10 +16,10 @@ const yellow = "🟨";
 
 export default ({ setStatScreen }) => {
 	const gameFromLocalStorage = JSON.parse(localStorage.getItem("savedGames"));
+	// console.log(gameFromLocalStorage);
 	const gamesWon = gameFromLocalStorage.filter((game) => !!game.didWin).length;
 	const gamesPlayed = gameFromLocalStorage.length;
 	const currentWinStreak = (() => {
-		console.log(gameFromLocalStorage);
 		if (gameFromLocalStorage.length === 0) return 0;
 		let wonLastGame = true;
 		let i = gameFromLocalStorage.length - 1;
@@ -63,7 +63,8 @@ export default ({ setStatScreen }) => {
 		)
 		.join("\n");
 
-	const copy = () => {
+	const copy = (e) => {
+		e.stopPropagation();
 		navigator.clipboard.writeText(clipboardContent);
 	};
 	const refresh = () => {
@@ -135,60 +136,48 @@ export default ({ setStatScreen }) => {
 					<div className="bars">
 						<div className="one bar" style={{ width: oneValue + "%" }}>
 							<span className="val">
-								{
-									gameFromLocalStorage.filter((game) => game.rounds === 1)
-										.length
-								}
+								{gameFromLocalStorage.filter((game) => game.rounds === 1)
+									.length || " "}
 							</span>
 						</div>
 						<div className="two bar" style={{ width: twoValue + "%" }}>
 							<span className="val">
-								{
-									gameFromLocalStorage.filter((game) => game.rounds === 2)
-										.length
-								}
+								{gameFromLocalStorage.filter((game) => game.rounds === 2)
+									.length || " "}
 							</span>
 						</div>
 						<div className="three bar" style={{ width: threeValue + "%" }}>
 							<span className="val">
-								{
-									gameFromLocalStorage.filter((game) => game.rounds === 3)
-										.length
-								}
+								{gameFromLocalStorage.filter((game) => game.rounds === 3)
+									.length || " "}
 							</span>
 						</div>
 						<div className="four bar" style={{ width: fourValue + "%" }}>
 							<span className="val">
-								{
-									gameFromLocalStorage.filter((game) => game.rounds === 4)
-										.length
-								}
+								{gameFromLocalStorage.filter((game) => game.rounds === 4)
+									.length || " "}
 							</span>
 						</div>
 						<div className="five bar" style={{ width: fiveValue + "%" }}>
 							<span className="val">
-								{
-									gameFromLocalStorage.filter((game) => game.rounds === 5)
-										.length
-								}
+								{gameFromLocalStorage.filter((game) => game.rounds === 5)
+									.length || " "}
 							</span>
 						</div>
 						<div className="six bar" style={{ width: sixValue + "%" }}>
 							<span className="val">
-								{
-									gameFromLocalStorage.filter((game) => game.rounds === 6)
-										.length
-								}
+								{gameFromLocalStorage.filter((game) => game.rounds === 6)
+									.length || " "}
 							</span>
 						</div>
 					</div>
 				</div>
 				<div className="buttons">
 					<button className="reset" onClick={refresh}>
-						Reset
+						Play Again
 					</button>
 					<button className="copy" onClick={copy}>
-						Copy
+						Copy Grid
 					</button>
 				</div>
 			</div>
