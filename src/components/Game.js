@@ -26,9 +26,11 @@ export default ({ statScreen, setStatScreen }) => {
 	const grid = useSelector((state) => state.grid);
 	const round = useSelector((state) => state.round);
 	const msg = useSelector((state) => state.msg);
+	const gameIsOver = useSelector((state) => state.gameIsOver);
 	const dispatch = useDispatch();
 
 	const onGameOver = ({ didWin, rounds, grid }) => {
+		dispatch({ type: "SET_GAME_IS_OVER", payload: true });
 		saveGame({ didWin, rounds, grid });
 		setTimeout(() => {
 			setStatScreen(true);
@@ -36,7 +38,7 @@ export default ({ statScreen, setStatScreen }) => {
 	};
 
 	const type = (letter) => {
-		if (grid[round].length < 5) {
+		if (grid[round].length < 5 && !gameIsOver) {
 			const newGrid = [...grid];
 			newGrid[round] += letter;
 			dispatch({ type: "SET_GRID", payload: newGrid });

@@ -7,10 +7,13 @@ const initalState = {
 	grid: ["", "", "", "", "", ""],
 	round: 0,
 	msg: {},
+	gameIsOver: false,
 };
 
 export const reducer = (state = initalState, action = {}) => {
 	switch (action.type) {
+		case "SET_GAME_IS_OVER":
+			return { ...state, gameIsOver: action.payload };
 		case "MSG": {
 			return {
 				...state,
