@@ -30,7 +30,9 @@ export default ({ statScreen, setStatScreen }) => {
 
 	const onGameOver = ({ didWin, rounds, grid }) => {
 		saveGame({ didWin, rounds, grid });
-		setStatScreen(true);
+		setTimeout(() => {
+			setStatScreen(true);
+		}, 1000);
 	};
 
 	const type = (letter) => {
