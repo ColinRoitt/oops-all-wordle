@@ -228,6 +228,12 @@ button.copy {
 	color: white;
 	cursor: pointer;
 }
+
+button.disabled {
+	opacity: 0.4;
+	cursor: not-allowed;
+}
+
 .graph {
 	position: relative;
 	width: 60%;

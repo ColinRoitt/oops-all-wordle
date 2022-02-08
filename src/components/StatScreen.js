@@ -166,7 +166,11 @@ export default ({ setStatScreen }) => {
 					<button className="reset" onClick={refresh}>
 						Play Again
 					</button>
-					<button className="copy" onClick={copy}>
+					<button
+						className={`copy ${gameIsOver ? "" : "disabled"}`}
+						disabled={!gameIsOver}
+						onClick={copy}
+					>
 						Copy Grid
 					</button>
 				</div>
