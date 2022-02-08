@@ -2,7 +2,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { convertToColors, blank, green, yellow } from "../util";
 
 export default ({ setStatScreen }) => {
+	const gameIsOver = useSelector((state) => state.gameIsOver);
 	const gameFromLocalStorage = JSON.parse(localStorage.getItem("savedGames"));
+	const lastGame = gameFromLocalStorage[gameFromLocalStorage.length - 1];
 	// console.log(gameFromLocalStorage);
 	const gamesWon = gameFromLocalStorage.filter((game) => !!game.didWin).length;
 	const gamesPlayed = gameFromLocalStorage.length;
@@ -40,19 +42,20 @@ export default ({ setStatScreen }) => {
 		convertToColors({ word: currentWord, row })
 	);
 
-	const clipboardContent = colors
-		.map((row, index) =>
+	const clipboardContent = [
+		`Wordsle - ${currentWord.toLowerCase()} ${lastGame.didWin ? round : "X"}/6`,
+		...colors.map((row, index) =>
 			row.reduce(
 				(acc, char) =>
 					(acc += char === "Y" ? yellow : char === "G" ? green : blank),
 				""
 			)
-		)
-		.join("\n");
+		),
+	].join("\n");
 
 	const copy = (e) => {
 		e.stopPropagation();
-		navigator.clipboard.writeText(clipboardContent);
+		if (gameIsOver) navigator.clipboard.writeText(clipboardContent);
 	};
 	const refresh = () => {
 		window.location.reload();
