@@ -113,7 +113,7 @@ export default ({ setStatScreen }) => {
 						<span className="label">max streak</span>
 					</div> */}
 				</div>
-				<h2 className="guess-distribution">GUESS DISTRIBUTION</h2>
+				<h1 className="guess-distribution">GUESS DISTRIBUTION</h1>
 				<div className="graph">
 					<div className="labels">
 						<span className="num">1</span>
