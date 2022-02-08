@@ -43,7 +43,9 @@ export default ({ setStatScreen }) => {
 	);
 
 	const clipboardContent = [
-		`Wordsle - ${currentWord.toLowerCase()} ${lastGame.didWin ? round : "X"}/6`,
+		`Wordsle - ${currentWord.toLowerCase()} ${
+			lastGame?.didWin ? round : "X"
+		}/6`,
 		...colors.map((row, index) =>
 			row.reduce(
 				(acc, char) =>
