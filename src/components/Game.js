@@ -6,8 +6,6 @@ import StatScreen from "./StatScreen";
 import { saveGame } from "../util";
 
 export default ({ statScreen, setStatScreen }) => {
-	// TODO
-	// allow hardware keyboard to be used
 	const currentWord = useSelector((state) => state.currentWord);
 	const words = useSelector((state) => state.words);
 	const nonPlayableWords = useSelector((state) => state.nonPlayableWords);
