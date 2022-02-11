@@ -34,7 +34,6 @@ export default ({ statScreen, setStatScreen }) => {
 		}
 	};
 	const enter = () => {
-		console.log("ENTER");
 		if (wordsToCheck.includes(grid[round].toLowerCase())) {
 			if (grid[round].length === 5) {
 				const newGrid = [...grid];
@@ -87,35 +86,23 @@ export default ({ statScreen, setStatScreen }) => {
 		return () => clearTimeout(id);
 	}, [msg]);
 
-	// const keyPress = ({ key }) => {
-	// 	const options = [
-	// 		..."abcdefghijklmnopqrstuvwxyz".split(""),
-	// 		"Enter",
-	// 		"Backspace",
-	// 	];
-	// 	if (options.includes(key)) {
-	// 		if (key === "Enter") enter();
-	// 		else if (key === "Backspace") backspace();
-	// 		else type(key.toUpperCase());
-	// 	}
-	// };
+	const keyPress = ({ key }) => {
+		const options = [
+			..."abcdefghijklmnopqrstuvwxyz".split(""),
+			"Enter",
+			"Backspace",
+		];
+		if (options.includes(key)) {
+			if (key === "Enter") enter();
+			else if (key === "Backspace") backspace();
+			else type(key.toUpperCase());
+		}
+	};
 
-	// const [debounce, setDebounce] = useState(false);
-
-	// useEffect(() => {
-	// 	document.addEventListener("keypress", (e) => {
-	// 		if (!(e.metaKey || e.ctrlKey)) {
-	// 			e.preventDefault();
-	// 			console.log("fire!", e.key);
-	// 			keyPress(e);
-	// 		}
-	// 	});
-	// }, [keyPress]);
-
-	// useEffect(() => {
-	// 	document.addEventListener("keypress", keyPress, false);
-	// 	// return document.removeEventListener("keypress", keyPress);
-	// }, [keyPress]);
+	useEffect(() => {
+		document.addEventListener("keydown", keyPress, false);
+		return () => document.removeEventListener("keydown", keyPress);
+	}, [keyPress]);
 
 	return (
 		<div className="game">
