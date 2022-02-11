@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default ({ letter = "", color, reveal, positionIndex }) => {
 	const transitionDelay = {
-		transitionDelay: `${positionIndex * 0.4}s`,
+		transitionDelay: `${positionIndex * 0.3}s`,
 	};
 	return (
 		<div className="cell-scene">
