@@ -193,6 +193,16 @@ body {
 	background-color: rgba(0, 0, 0, 0.7);
 	z-index: 10;
 }
+
+@keyframes grow {
+	0% {
+		transform: scale(0);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+
 .stat-screen {
 	z-index: 20;
 	background-color: black;
@@ -204,6 +214,7 @@ body {
 	justify-content: space-evenly;
 	align-items: center;
 	border-radius: 0.2rem;
+	animation: 0.2s grow;
 }
 
 .stat-screen h1 {
