@@ -75,16 +75,40 @@ body {
 	height: 100%;
 }
 
-.cell {
-	border: solid 1px rgb(100 99 99);
+.cell-scene {
+	perspective: 600%;
 	height: 3rem;
 	width: 3rem;
 	margin: 0.2rem;
+}
+
+.cell-cont {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	transition: transform 1.5s;
+	transform-style: preserve-3d;
+}
+
+.cell-cont.is-flipped {
+	transform: rotateX(180deg);
+}
+
+.cell {
+	border: solid 1px rgb(100 99 99);
+	height: 100%;
+	width: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	font-size: 2rem;
 	font-weight: bold;
+	position: absolute;
+	backface-visibility: hidden;
+}
+
+.cell--back {
+	transform: rotateX(180deg);
 }
 
 .cell.past {
