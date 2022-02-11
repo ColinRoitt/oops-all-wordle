@@ -19,10 +19,19 @@ export default ({ statScreen, setStatScreen }) => {
 	const dispatch = useDispatch();
 
 	const onGameOver = ({ didWin, rounds, grid }) => {
-		dispatch({ type: "SET_GAME_IS_OVER", payload: true });
 		saveGame({ didWin, rounds, grid });
 		setTimeout(() => {
+			dispatch({ type: "SET_GAME_IS_OVER", payload: true });
 			setStatScreen(true);
+			dispatch({
+				type: "MSG",
+				payload: {
+					duration: 10000000,
+					text: didWin
+						? `Correct! in ${round + 1} guesses - refresh to play again`
+						: `The word was ${currentWord} - refresh to play again`,
+				},
+			});
 		}, 1950);
 	};
 
@@ -41,24 +50,9 @@ export default ({ statScreen, setStatScreen }) => {
 				dispatch({ type: "SET_ROUND", payload: round + 1 });
 				if (grid[round] === currentWord) {
 					onGameOver({ didWin: true, rounds: round + 1, grid });
-					dispatch({
-						type: "MSG",
-						payload: {
-							duration: 10000000,
-							text: `Correct! in ${round + 1} guesses - refresh to play again`,
-						},
-					});
 				} else {
 					if (round >= 5) {
 						onGameOver({ didWin: false, rounds: round + 1, grid });
-						dispatch({
-							type: "MSG",
-							payload: {
-								duration: 10000000,
-								text:
-									"The word was " + currentWord + " - refresh to play again",
-							},
-						});
 					}
 				}
 			}
