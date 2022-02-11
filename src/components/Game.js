@@ -23,7 +23,7 @@ export default ({ statScreen, setStatScreen }) => {
 		saveGame({ didWin, rounds, grid });
 		setTimeout(() => {
 			setStatScreen(true);
-		}, 1000);
+		}, 1950);
 	};
 
 	const type = (letter) => {
