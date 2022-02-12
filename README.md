@@ -8,6 +8,8 @@ A React-Redux based LEGALLY DISTINCT GAME available here https://colinroitt.uk/c
 ## Tech
 Bare bones static react and redux - no other libraries.
 
+Kinda wish I had used SCSS or something tho ngl...
+
 Pretty simply made available to play around with - go do whatever with it. 
 
 Bonus points if you can
