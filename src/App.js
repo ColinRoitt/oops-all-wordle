@@ -28,12 +28,26 @@ function App() {
 	};
 
 	useEffect(() => {
+		const search = window.location.search;
+		const params = new URLSearchParams(search);
+		const word = params.get("pz");
+		const decodedWord = !!word
+			? word
+					.split("-")
+					.map((chr, index) => String.fromCharCode((chr - index * 3) / 8))
+					.join("")
+			: null;
+		const chosenWord =
+			decodedWord ||
+			words[Math.floor(Math.random() * words.length)].toUpperCase();
+
 		dispatch({ type: "SET_WORDS", payload: words });
 		dispatch({ type: "SET_NON_PLAYABLE_WORDS", payload: nonPlayableWords });
 		dispatch({
 			type: "SET_CURRENT_WORD",
 			// payload: "POISE",
-			payload: words[Math.floor(Math.random() * words.length)].toUpperCase(),
+			// payload: words[Math.floor(Math.random() * words.length)].toUpperCase(),
+			payload: chosenWord,
 		});
 		intialiseLocalStorage();
 	}, []);
