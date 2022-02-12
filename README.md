@@ -1,6 +1,6 @@
 # Collection of Wordsle
 
-A React-Redux based LEGALLY DISTINCT GAME availabel here https://colinroitt.uk/collection-of-wordsle
+A React-Redux based LEGALLY DISTINCT GAME available here https://colinroitt.uk/collection-of-wordsle
 
 ![image](https://user-images.githubusercontent.com/9614541/153707025-f867f71c-00d7-4f81-9621-911050405129.png)
 
