@@ -11,7 +11,11 @@ Bare bones static react and redux - no other libraries.
 Pretty simply made available to play around with - go do whatever with it. 
 
 Bonus points if you can
+
+```
 A - Figure out (without cheating and looking at the util file) how the URL word encoding works. It's not complicated just enough to obfuscate it from the user
+
 B - Use this to evolve an agent to play this game because that's just fun
+```
 
 somethign something no affiliation with whoever etc 
