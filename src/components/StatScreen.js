@@ -61,7 +61,7 @@ export default ({ setStatScreen }) => {
 		if (gameIsOver) navigator.clipboard.writeText(clipboardContent(true));
 	};
 	const refresh = () => {
-		window.location.reload();
+		window.location = window.location.pathname;
 	};
 	const copyLink = (e) => {
 		e.stopPropagation();
@@ -177,7 +177,7 @@ export default ({ setStatScreen }) => {
 				</div>
 				<div className="buttons">
 					<button className="reset" onClick={refresh}>
-						Play Again
+						New Game
 					</button>
 					<button
 						className={`copy ${gameIsOver ? "" : "disabled"}`}
