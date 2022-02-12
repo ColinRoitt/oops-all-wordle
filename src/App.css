@@ -1,9 +1,13 @@
 html {
   font-size: 16px;
+  height: 100%;
 }
+
 body {
   font-size: 62.5%;
   background-color: black;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
 }
 
 .App {
@@ -12,7 +16,7 @@ body {
   align-items: center;
   justify-self: flex-start;
   color: white;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 .light-mode {
