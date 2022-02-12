@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import KeyboardKey from './KeyboardKey';
 import Row from './Row';
-import StatScreen from './StatScreen';
 import { saveGame } from '../util';
 
 export default ({ statScreen, setStatScreen }) => {
@@ -80,7 +79,7 @@ export default ({ statScreen, setStatScreen }) => {
 
   const keyPress = ({ key }) => {
     const options = [...'abcdefghijklmnopqrstuvwxyz'.split(''), 'Enter', 'Backspace'];
-    if (options.includes(key)) {
+    if (options.includes(key) && !statScreen) {
       if (key === 'Enter') enter();
       else if (key === 'Backspace') backspace();
       else type(key.toUpperCase());
