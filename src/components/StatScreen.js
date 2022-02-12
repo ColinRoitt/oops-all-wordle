@@ -18,23 +18,6 @@ export default ({ setStatScreen }) => {
 		}
 		return gameFromLocalStorage.length - 2 - i;
 	})();
-
-	// const longestWinStreak =
-	// 	(() => {
-	// 		let i = 0;
-	// 		let j = 0;
-	// 		while (i < gameFromLocalStorage.length) {
-	// 			if (gameFromLocalStorage[i].didWin) {
-	// 				j++;
-	// 			} else {
-	// 				j = 0;
-	// 			}
-	// 			i++;
-	// 		}
-	// 		return j;
-	// 	})() + 1;
-
-	// const dispatch = useDispatch();
 	const currentWord = useSelector((state) => state.currentWord);
 	const round = useSelector((state) => state.round);
 	const grid = useSelector((state) => state.grid).slice(0, round);
