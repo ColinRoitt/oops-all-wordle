@@ -5,6 +5,7 @@ import { words } from "./data/words";
 import { nonPlayableWords } from "./data/nonPlayableWords";
 import Game from "./components/Game";
 import StatScreen from "./components/StatScreen";
+import { decodeWord } from "./util";
 
 function App() {
 	const dispatch = useDispatch();
@@ -31,12 +32,7 @@ function App() {
 		const search = window.location.search;
 		const params = new URLSearchParams(search);
 		const word = params.get("pz");
-		const decodedWord = !!word
-			? word
-					.split("-")
-					.map((chr, index) => String.fromCharCode((chr - index * 3) / 8))
-					.join("")
-			: null;
+		const decodedWord = !!word ? decodeWord(word) : null;
 		const chosenWord =
 			decodedWord ||
 			words[Math.floor(Math.random() * words.length)].toUpperCase();

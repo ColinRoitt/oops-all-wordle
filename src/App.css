@@ -245,8 +245,15 @@ body {
 	font-size: 0.8rem;
 }
 
+.buttons {
+	display: grid;
+	grid-template-rows: 1fr 1fr;
+	justify-items: center;
+}
+
 button.reset,
-button.copy {
+button.copy,
+button.copy-link {
 	background-color: #6aaa64;
 	height: 2rem;
 	width: 6rem;
@@ -257,6 +264,12 @@ button.copy {
 	margin: 0.5rem;
 	color: white;
 	cursor: pointer;
+}
+
+button.copy-link {
+	/* span two grid fr */
+	grid-column: 1 / 3;
+	width: 10rem;
 }
 
 button.disabled {

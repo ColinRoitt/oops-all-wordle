@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { convertToColors, blank, green, yellow } from "../util";
+import { convertToColors, blank, green, yellow, encodeWord } from "../util";
 
 export default ({ setStatScreen }) => {
 	const gameIsOver = useSelector((state) => state.gameIsOver);
@@ -42,25 +42,36 @@ export default ({ setStatScreen }) => {
 		convertToColors({ word: currentWord, row })
 	);
 
-	const clipboardContent = [
-		`Wordsle - ${currentWord.toLowerCase()} ${
-			lastGame?.didWin ? round : "X"
-		}/6`,
-		...colors.map((row, index) =>
-			row.reduce(
-				(acc, char) =>
-					(acc += char === "Y" ? yellow : char === "G" ? green : blank),
-				""
-			)
-		),
-	].join("\n");
+	const clipboardContent = (showWord) =>
+		[
+			`Wordsle - ${showWord ? currentWord.toLowerCase() : ""} ${
+				lastGame?.didWin ? round : "X"
+			}/6`,
+			...colors.map((row, index) =>
+				row.reduce(
+					(acc, char) =>
+						(acc += char === "Y" ? yellow : char === "G" ? green : blank),
+					""
+				)
+			),
+		].join("\n");
 
 	const copy = (e) => {
 		e.stopPropagation();
-		if (gameIsOver) navigator.clipboard.writeText(clipboardContent);
+		if (gameIsOver) navigator.clipboard.writeText(clipboardContent(true));
 	};
 	const refresh = () => {
 		window.location.reload();
+	};
+	const copyLink = (e) => {
+		e.stopPropagation();
+		navigator.clipboard.writeText(
+			clipboardContent(false) +
+				"\n" +
+				window.location.origin +
+				"/collection-of-wordsle?pz=" +
+				encodeWord(currentWord)
+		);
 	};
 
 	const oneValue =
@@ -174,6 +185,13 @@ export default ({ setStatScreen }) => {
 						onClick={copy}
 					>
 						Copy Grid
+					</button>
+					<button
+						className={`copy-link ${gameIsOver ? "" : "disabled"}`}
+						disabled={!gameIsOver}
+						onClick={copyLink}
+					>
+						Copy Link to this Puzzle
 					</button>
 				</div>
 			</div>

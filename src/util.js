@@ -27,3 +27,15 @@ export const saveGame = (game) => {
 	const newSavedGames = [...savedGames, game];
 	localStorage.setItem("savedGames", JSON.stringify(newSavedGames));
 };
+
+export const encodeWord = (word) =>
+	word
+		.split("")
+		.map((chr, index) => chr.charCodeAt(0) * 8 + index * 3)
+		.join("-");
+
+export const decodeWord = (word) =>
+	word
+		.split("-")
+		.map((chr, index) => String.fromCharCode((chr - index * 3) / 8))
+		.join("");
