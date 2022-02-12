@@ -5,9 +5,12 @@ export default ({ setStatScreen }) => {
 	const gameIsOver = useSelector((state) => state.gameIsOver);
 	const gameFromLocalStorage = JSON.parse(localStorage.getItem("savedGames"));
 	const lastGame = gameFromLocalStorage[gameFromLocalStorage.length - 1];
-	// console.log(gameFromLocalStorage);
 	const gamesWon = gameFromLocalStorage.filter((game) => !!game.didWin).length;
 	const gamesPlayed = gameFromLocalStorage.length;
+	const currentWord = useSelector((state) => state.currentWord);
+	const round = useSelector((state) => state.round);
+	const grid = useSelector((state) => state.grid).slice(0, round);
+
 	const currentWinStreak = (() => {
 		if (gameFromLocalStorage.length === 0) return 0;
 		let wonLastGame = true;
@@ -18,11 +21,16 @@ export default ({ setStatScreen }) => {
 		}
 		return gameFromLocalStorage.length - 2 - i;
 	})();
-	const currentWord = useSelector((state) => state.currentWord);
-	const round = useSelector((state) => state.round);
-	const grid = useSelector((state) => state.grid).slice(0, round);
+
 	const colors = grid.map((row, index) =>
 		convertToColors({ word: currentWord, row })
+	);
+
+	const barValues = [1, 2, 3, 4, 5, 6].map(
+		(value) =>
+			(gameFromLocalStorage.filter((game) => game.rounds === value).length /
+				gamesPlayed) *
+			100
 	);
 
 	const clipboardContent = (showWord) =>
@@ -57,34 +65,6 @@ export default ({ setStatScreen }) => {
 		);
 	};
 
-	const oneValue =
-		(gameFromLocalStorage.filter((game) => game.rounds === 1).length /
-			gamesPlayed) *
-		100;
-
-	const twoValue =
-		(gameFromLocalStorage.filter((game) => game.rounds === 2).length /
-			gamesPlayed) *
-		100;
-
-	const threeValue =
-		(gameFromLocalStorage.filter((game) => game.rounds === 3).length /
-			gamesPlayed) *
-		100;
-
-	const fourValue =
-		(gameFromLocalStorage.filter((game) => game.rounds === 4).length /
-			gamesPlayed) *
-		100;
-	const fiveValue =
-		(gameFromLocalStorage.filter((game) => game.rounds === 5).length /
-			gamesPlayed) *
-		100;
-	const sixValue =
-		(gameFromLocalStorage.filter((game) => game.rounds === 6).length /
-			gamesPlayed) *
-		100;
-
 	return (
 		<div className="stat-screen-cont" onClick={() => setStatScreen(false)}>
 			<div className="stat-screen">
@@ -104,10 +84,6 @@ export default ({ setStatScreen }) => {
 						<span className="num">{currentWinStreak}</span>
 						<span className="label">streak</span>
 					</div>
-					{/* <div className="value">
-						<span className="num">{longestWinStreak}</span>
-						<span className="label">max streak</span>
-					</div> */}
 				</div>
 				<h1 className="guess-distribution">GUESS DISTRIBUTION</h1>
 				<div className="graph">
@@ -120,42 +96,20 @@ export default ({ setStatScreen }) => {
 						<span className="num">6</span>
 					</div>
 					<div className="bars">
-						<div className="one bar" style={{ width: oneValue + "%" }}>
-							<span className="val">
-								{gameFromLocalStorage.filter((game) => game.rounds === 1)
-									.length || "-"}
-							</span>
-						</div>
-						<div className="two bar" style={{ width: twoValue + "%" }}>
-							<span className="val">
-								{gameFromLocalStorage.filter((game) => game.rounds === 2)
-									.length || "-"}
-							</span>
-						</div>
-						<div className="three bar" style={{ width: threeValue + "%" }}>
-							<span className="val">
-								{gameFromLocalStorage.filter((game) => game.rounds === 3)
-									.length || "-"}
-							</span>
-						</div>
-						<div className="four bar" style={{ width: fourValue + "%" }}>
-							<span className="val">
-								{gameFromLocalStorage.filter((game) => game.rounds === 4)
-									.length || "-"}
-							</span>
-						</div>
-						<div className="five bar" style={{ width: fiveValue + "%" }}>
-							<span className="val">
-								{gameFromLocalStorage.filter((game) => game.rounds === 5)
-									.length || "-"}
-							</span>
-						</div>
-						<div className="six bar" style={{ width: sixValue + "%" }}>
-							<span className="val">
-								{gameFromLocalStorage.filter((game) => game.rounds === 6)
-									.length || "-"}
-							</span>
-						</div>
+						{["one", "two", "three", "four", "five", "six"].map(
+							(number, index) => (
+								<div
+									className={`${number} bar`}
+									style={{ width: barValues[index] + "%" }}
+								>
+									<span className="val">
+										{gameFromLocalStorage.filter(
+											(game) => game.rounds === index + 1
+										).length || "-"}
+									</span>
+								</div>
+							)
+						)}
 					</div>
 				</div>
 				<div className="buttons">
