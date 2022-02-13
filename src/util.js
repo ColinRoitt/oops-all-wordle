@@ -23,14 +23,19 @@ export const saveGame = (game) => {
   localStorage.setItem('savedGames', JSON.stringify(newSavedGames));
 };
 
-export const encodeWord = (word) =>
+export const __encodeWord = (word) =>
   word
     .split('')
     .map((chr, index) => chr.charCodeAt(0) * 8 + index * 3)
     .join('-');
 
-export const decodeWord = (word) =>
+export const __decodeWord = (word) =>
   word
     .split('-')
     .map((chr, index) => String.fromCharCode((chr - index * 3) / 8))
     .join('');
+
+export const encodeWord = btoa;
+
+export const decodeWord = (word) =>
+  word.match(/^([0-9]{3}-){4}[0-9]{3}$/) ? __decodeWord(word) : atob(word);
