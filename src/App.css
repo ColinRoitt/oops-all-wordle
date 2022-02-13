@@ -16,7 +16,7 @@ body {
   align-items: center;
   justify-self: flex-start;
   color: white;
-  /* height: 100vh; */
+  gap: 3rem;
 }
 
 .light-mode {
@@ -75,7 +75,6 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  margin-top: 3rem;
   height: 100%;
 }
 
