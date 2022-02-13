@@ -10,6 +10,9 @@ export default ({ setStatScreen }) => {
   const currentWord = useSelector((state) => state.currentWord);
   const round = useSelector((state) => state.round);
   const grid = useSelector((state) => state.grid).slice(0, round);
+  const search = window.location.search;
+  const params = new URLSearchParams(search);
+  const isShared = !!params.get('pz');
 
   const currentWinStreak = (() => {
     if (gameFromLocalStorage.length === 0) return 0;
@@ -39,7 +42,7 @@ export default ({ setStatScreen }) => {
 
   const copy = (e) => {
     e.stopPropagation();
-    if (gameIsOver) navigator.clipboard.writeText(clipboardContent(true));
+    if (gameIsOver) navigator.clipboard.writeText(clipboardContent(!isShared));
   };
   const refresh = () => {
     window.location = window.location.pathname;
