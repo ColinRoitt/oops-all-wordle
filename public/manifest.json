@@ -1,6 +1,6 @@
 {
-  "short_name": "Collection of Wordles",
-  "name": "Create React App Sample",
+  "short_name": "Wordles",
+  "name": "Collection of Wordles",
   "icons": [
     {
       "src": "FAVICON.png",
